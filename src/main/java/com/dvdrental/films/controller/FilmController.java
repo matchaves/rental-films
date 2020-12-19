@@ -1,8 +1,9 @@
 package com.dvdrental.films.controller;
 
 
-import com.dvdrental.customer.model.Film;
-import com.dvdrental.customer.service.FilmService;
+import com.dvdrental.films.model.Film;
+import com.dvdrental.films.model.Inventory;
+import com.dvdrental.films.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +23,15 @@ public class FilmController {
 
 
     @GetMapping()
-    public List<Film> get () {
-        return filmService.getFilms();
+    public List<Film> getFilms() {
+        List<Film> film = filmService.getFilms();
+        return film;
+    }
+
+    @GetMapping("/availables")
+    public List<Inventory> get () {
+        List<Inventory> film = filmService.getAvailableFilms();
+        return film;
     }
 
     @GetMapping("/{id}")
@@ -33,12 +41,12 @@ public class FilmController {
                 .orElse((ResponseEntity.notFound().build()));
     }
 
-    /*@GetMapping("/lang/{id}")
-    public ResponseEntity getFilmByLanguage(@PathVariable("id") Integer id ) {
-        List<FilmDto> film = filmService.getFilmsByLanguage(id);
+    @GetMapping("/availablesbystore/{id}")
+    public ResponseEntity getFilmByLanguage(@PathVariable("id") Long id) {
+        List<Inventory> film = filmService.getAvailableByIdStore(id);
         return  film.isEmpty() ?
                 ResponseEntity.noContent().build() :
                 ResponseEntity.ok(film);
-    }*/
+    }
 
 }

@@ -2,6 +2,7 @@ package com.dvdrental.films.model;
 
 import lombok.Data;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
