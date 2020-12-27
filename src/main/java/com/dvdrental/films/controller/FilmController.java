@@ -1,6 +1,7 @@
 package com.dvdrental.films.controller;
 
 
+import com.dvdrental.films.dto.FilmDtoAmount;
 import com.dvdrental.films.model.Film;
 import com.dvdrental.films.model.Inventory;
 import com.dvdrental.films.service.FilmService;
@@ -38,6 +39,13 @@ public class FilmController {
     public ResponseEntity getFilmById(@PathVariable("id") Long id ) {
         Optional<Film> film = filmService.getFilmbyId(id);
         return  film.map(c -> ResponseEntity.ok(film))
+                .orElse((ResponseEntity.notFound().build()));
+    }
+
+    @GetMapping("/cost/{id}")
+    public ResponseEntity<Optional<FilmDtoAmount>> getCostFilm(@PathVariable("id") Long id ) {
+        Optional<FilmDtoAmount> filmCost = filmService.getCostFilm(id);
+        return  filmCost.map(c -> ResponseEntity.ok(filmCost))
                 .orElse((ResponseEntity.notFound().build()));
     }
 

@@ -1,7 +1,7 @@
 package com.dvdrental.films.service;
 
 
-
+import com.dvdrental.films.dto.FilmDtoAmount;
 import com.dvdrental.films.model.Film;
 import com.dvdrental.films.model.Inventory;
 import com.dvdrental.films.repository.FilmRepository;
@@ -31,11 +31,19 @@ public class FilmService {
         return films;
     }
 
+    public Optional<FilmDtoAmount> getCostFilm(Long id) {
+        Optional<Film> film = filmRepository.findById(id);
+        Optional<FilmDtoAmount> filmdto = film.map(FilmDtoAmount::create);//.stream().map(FilmDtoAmount::create).collect(Collectors.toList());
+        return filmdto;
+    }
+
 
     public Optional<Film> getFilmbyId(Long id) {
         Optional<Film> film = filmRepository.findById(id);
         return film;
     }
+
+
 
     public List<Inventory> getAvailableByIdStore(Long id) {
         List<Inventory> films = inventoryRepository.getAvailableByIdStore(id);
