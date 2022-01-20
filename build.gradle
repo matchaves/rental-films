@@ -67,8 +67,9 @@ jib {
 		} else {
 			tags = ["dev"]
 		}
-
 	}
+
+
 }
 
 test {
