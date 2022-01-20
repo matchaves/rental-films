@@ -27,7 +27,7 @@ GET /cost
 get custo de alocação do filme por film_id
 ```
 
-```
+``
 GET /availablesbystore/{store_id}
 get lista de filmes disponiveis para alugar por store_id
 ```
