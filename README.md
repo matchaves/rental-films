@@ -7,7 +7,7 @@ base-path /films
 ```
 
 ```
-GET /
+GET /catalog
 endpoint lista todos filmes no catalogo
 ```
 
@@ -17,18 +17,17 @@ lista todos filmes disponivel em estoque para alugar
 ```
 
 ```
-GET /{id}
-GET /films?id=X
+GET /films?film_id=X
 get film por id
 ```
 
 ```
-GET /cost
+GET /cost?id=X
 get custo de alocação do filme por film_id
 ```
 
 ``
-GET /availablesbystore/{store_id}
+GET /availablesbystore?store_id=X
 get lista de filmes disponiveis para alugar por store_id
 ```
 
